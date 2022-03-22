@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Dog-Admin-Player/static/css/main.882f7a3c.css",
+    "main.js": "/Dog-Admin-Player/static/js/main.067d3eac.js",
+    "static/js/787.432c8ea1.chunk.js": "/Dog-Admin-Player/static/js/787.432c8ea1.chunk.js",
+    "static/media/Pretendard-Regular.ttf": "/Dog-Admin-Player/static/media/Pretendard-Regular.02efe31729ef598431fa.ttf",
+    "static/media/dog-admin-zero.gif": "/Dog-Admin-Player/static/media/dog-admin-zero.e68c333e28a4e6502444.gif",
+    "static/media/SB 어그로 M.ttf": "/Dog-Admin-Player/static/media/SB 어그로 M.ba7f85d311382e806808.ttf",
+    "static/media/insta.png": "/Dog-Admin-Player/static/media/insta.e719d8b29f452a16302d.png",
+    "index.html": "/Dog-Admin-Player/index.html",
+    "static/media/twitch.svg": "/Dog-Admin-Player/static/media/twitch.807de7be06cc1a24bcf43e9957172b35.svg",
+    "main.882f7a3c.css.map": "/Dog-Admin-Player/static/css/main.882f7a3c.css.map",
+    "main.067d3eac.js.map": "/Dog-Admin-Player/static/js/main.067d3eac.js.map",
+    "787.432c8ea1.chunk.js.map": "/Dog-Admin-Player/static/js/787.432c8ea1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.882f7a3c.css",
+    "static/js/main.067d3eac.js"
+  ]
+}
