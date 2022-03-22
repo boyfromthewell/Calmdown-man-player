@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+> _침착맨을 너무 사랑한 나머지 침착맨(침투부) 플레이어를 만들어 보았다. 유튜브 API를 활용해 침착맨 채널의 정보를 실시간으로 따왔다._
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+오로지 침착맨에게 집중하고 싶은 분들을 위해 만들었읍니다.
 
-## Available Scripts
+***
 
-In the project directory, you can run:
+## 메인화면
 
-### `npm start`
+![](https://images.velog.io/images/boyfromthewell/post/0488b663-59bb-47cc-9e10-2ffeb3f8ac8c/image.png) 
+침착맨 채널의 재생목록을 업로드 최신순으로 50개까지 불러온다. 유튜브 API에서 가져올수 있는 재생목록이 최대 50개까지 지원이 안되서 아쉽다.  
+(일상 재롱 재생목록 진짜 재밌는데 따흑,,,,)  
+10개씩 페이지네이션 되어있다.  
+![](https://images.velog.io/images/boyfromthewell/post/e0dc0ae7-c8d4-45a3-8749-71400d79ffed/dog-admin-zero.gif)  
+해당 이미지로 로딩 UI도 구현했는데 로딩이 너무 빨라서 잘 안보인다
+***
+## 재생목록 동영상 즉-시 감상
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![](https://images.velog.io/images/boyfromthewell/post/78cb643e-58ca-4e89-a12c-d4bf8a08c74d/image.png)  '쇼핑맨' 재생목록의 동영상을 감상 할것이다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![](https://images.velog.io/images/boyfromthewell/post/046b040f-7331-4ea5-821a-c707def56a40/image.png)  들어가게 되면 디폴트로 조회수가 높은순으로 해당 재생목록의 동영상이 전부 나온다.  
+조회수가 50만이 넘어갔다면 추천 딱지가 붙도록 구현해놓았다. 기준은 내맘이다.
 
-### `npm test`
+### 조회순, 최신순, 오래된순
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+>select의 value값(조회순, 최신순, 오래된순) 에 따라 데이터를 필터링해 return 한 데이터를 다시 렌더링 해주는 방식으로 구현하였다.
 
-### `npm run build`
+![](https://images.velog.io/images/boyfromthewell/post/21a1511b-1031-416f-bebd-f43712bc18ea/image.png)  
+select 태그를 통해 구현하였다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](https://images.velog.io/images/boyfromthewell/post/a7291283-924b-44fa-a9a4-1d42199784b3/image.png)  
+10년이면 강산이 변한다 했다, 최신 동영상으로 즉-시 감상 가능하다
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](https://images.velog.io/images/boyfromthewell/post/c0ab044d-c423-4781-921d-99606dcb48ec/image.png)  
+구관이 명관이다 라는 말이 있다. 오래된 동영상 순으로 즉-시 감상 가능하다. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](https://images.velog.io/images/boyfromthewell/post/097c2fd4-df32-462d-bc01-c8281a350b62/image.png)  
+현재 날짜와 업로드한 날짜의 차이를 계산하는 함수를 만들어 7일이내 업로드된 영상이면 New 딱지가 붙도록 하였다.
+***
+## 즉-시 영상 감상
 
-### `npm run eject`
+![](https://images.velog.io/images/boyfromthewell/post/c26fbdfa-09cf-46a2-b081-7143579515f6/image.png)  
+보고싶은 영상을 클릭하면 풀스크린 QHD 화질로 우리의 개방장을 즉-시 감상 가능하다.  
+털보아저씨에게 오로지 집중하기 위해 UI를 최소화 하였다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+***
+>배포 링크: https://boyfromthewell.github.io/Dog-Admin-Player/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> _**유튜브 API를 다뤄보고 바로 만들어보고 싶어서 만들었고, 간단한 기능밖에 없어서 큰 어려움은 없이 토이프로젝트를 즐겁게 만들었던거 같다!!!! CSS가 근데 제일 싫다!!!**_
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
