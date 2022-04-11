@@ -30,6 +30,10 @@
 .playlist{
     width: 100%;
     border-bottom: 1px solid lightgrey;
+    img{
+        width: 70%;
+        max-width: 500px;
+    }
 }
 .logo{
     border-radius: 70%;
@@ -72,6 +76,8 @@
 .page-btn{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin-top: 30px;
     padding-bottom: 30px;
 }

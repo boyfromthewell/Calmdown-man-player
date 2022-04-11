@@ -8,7 +8,6 @@ function VideoPlayer() {
   let { videoID } = useParams();
   console.log(videoID);
   let videoLink = "https://youtube.com/watch?v=" + videoID;
-  console.log(videoLink);
   return (
     <>
       <ReactPlayer

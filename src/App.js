@@ -11,25 +11,44 @@ import { Button } from "react-bootstrap";
 import PlayList from "./PlayList";
 import VideoPlayer from "./VideoPlayer";
 
-function App() {  
-  const key=process.env.REACT_APP_YOUTUBE_API_KEY;
+function App() {
+  const key = process.env.REACT_APP_YOUTUBE_API_KEY;
 
   const [playlist, setPlaylist] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-  
+
+  const nextPageToken = ["CDIQAA", "CGQQAA", "CJYBEAA"];
   useEffect(() => {
     axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&maxResults=50&key=${key}`
+      .all([
+        axios.get(
+          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=CDIQAQ&maxResults=50&key=${key}`
+        ),
+        axios.get(
+          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=${nextPageToken[0]}&maxResults=50&key=${key}`
+        ),
+        axios.get(
+          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=${nextPageToken[1]}&maxResults=50&key=${key}`
+        ),
+        axios.get(
+          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=${nextPageToken[2]}&maxResults=50&key=${key}`
+        ),
+      ])
+      .then(
+        axios.spread((res1, res2, res3, res4) => {
+          const data1 = res1.data.items;
+          const data2 = res2.data.items;
+          const data3 = res3.data.items;
+          const data4 = res4.data.items;
+          const res = [...data1, ...data2, ...data3, ...data4];
+          setPlaylist(res);
+          console.log(playlist);
+          setLoading(false);
+        })
       )
-      .then((res) => {
-        console.log(res);
-        setPlaylist(res.data.items);
-        setLoading(false);
-      })
       .catch(() => {});
   }, []);
   console.log(playlist);

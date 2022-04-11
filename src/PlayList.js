@@ -34,7 +34,6 @@ function PlayList() {
     });
   }
   let videoIDstring = videoID.join("");
-  console.log(videoIDstring);
 
   useEffect(() => {
     axios
@@ -82,8 +81,7 @@ function PlayList() {
   function getDate(d1, d2) {
     let date1 = new Date(d1);
     let date2 = new Date(d2);
-    console.log(date1);
-    console.log(date2);
+  
     let diffDate = date1.getTime() - date2.getTime();
     if (Math.abs(diffDate / (1000 * 3600 * 24)) < 7) {
       return true;
