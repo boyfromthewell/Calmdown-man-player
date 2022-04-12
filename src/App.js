@@ -13,7 +13,8 @@ import VideoPlayer from "./VideoPlayer";
 
 function App() {
   const key = process.env.REACT_APP_YOUTUBE_API_KEY;
-
+  const YOUTUBE_API_URL =
+    "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ";
   const [playlist, setPlaylist] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(10);
@@ -25,16 +26,16 @@ function App() {
     axios
       .all([
         axios.get(
-          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=CDIQAQ&maxResults=50&key=${key}`
+          `${YOUTUBE_API_URL}&pageToken=CDIQAQ&maxResults=50&key=${key}`
         ),
         axios.get(
-          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=${nextPageToken[0]}&maxResults=50&key=${key}`
+          `${YOUTUBE_API_URL}&pageToken=${nextPageToken[0]}&maxResults=50&key=${key}`
         ),
         axios.get(
-          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=${nextPageToken[1]}&maxResults=50&key=${key}`
+          `${YOUTUBE_API_URL}&pageToken=${nextPageToken[1]}&maxResults=50&key=${key}`
         ),
         axios.get(
-          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&pageToken=${nextPageToken[2]}&maxResults=50&key=${key}`
+          `${YOUTUBE_API_URL}&pageToken=${nextPageToken[2]}&maxResults=50&key=${key}`
         ),
       ])
       .then(
@@ -45,7 +46,6 @@ function App() {
           const data4 = res4.data.items;
           const res = [...data1, ...data2, ...data3, ...data4];
           setPlaylist(res);
-          console.log(playlist);
           setLoading(false);
         })
       )
