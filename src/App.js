@@ -5,7 +5,7 @@ import insta from "./images/insta.png";
 import twitch from "./images/twitch.svg";
 import dogAdmin from "./images/dog-admin-zero.gif";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, user } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import PlayList from "./PlayList";
@@ -13,13 +13,17 @@ import VideoPlayer from "./VideoPlayer";
 
 function App() {
   const key = process.env.REACT_APP_YOUTUBE_API_KEY;
+
   const YOUTUBE_API_URL =
     "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ";
+
   const [playlist, setPlaylist] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
+
+  let [search, setSearch] = useState([]);
 
   const nextPageToken = ["CDIQAA", "CGQQAA", "CJYBEAA"];
   useEffect(() => {
@@ -53,6 +57,18 @@ function App() {
   }, []);
   console.log(playlist);
 
+  const updateChange = useCallback(
+    (e) => {
+      let data = e.target.value;
+      let filterData = playlist.filter((i) => i.snippet.title.includes(data));
+      if (data.length === 0) {
+        filterData = [];
+      }
+      setSearch(filterData);
+    },
+    [search]
+  );
+
   return (
     <div className="App">
       <div className="nav-bar">
@@ -75,6 +91,11 @@ function App() {
           </p>
           <div className="container">
             {loading ? <Loading /> : null}
+            <SearchBar
+              updateChange={updateChange}
+              setSearch={setSearch}
+              search={search}
+            />
             {playlist &&
               playlist.slice(offset, offset + limit).map((i, idx) => {
                 return (
@@ -134,4 +155,35 @@ function Pagination({ total, limit, page, setPage }) {
   );
 }
 
-export default App;
+const SearchBar = ({ updateChange, search, setSearch }) => {
+  return (
+    <div className="search">
+      <input
+        className="seacrh-bar"
+        style={{
+          width: "100%",
+          height: "40px",
+          maxWidth: "600px",
+          border: "1px solid white",
+        }}
+        placeholder="즉-시 검색"
+        onChange={(e) => updateChange(e)}
+      ></input>
+      <div className="search-box">
+        {search.map((item) => {
+          return (
+            <>
+              <div className="search-result">
+                <Link to={"/playlist/" + item.id}>
+                  <p onClick={() => setSearch([])}>{item.snippet.title}</p>
+                </Link>
+              </div>
+            </>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default React.memo(App);
