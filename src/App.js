@@ -1,21 +1,20 @@
 import "./App.css";
-import "./Main.scss";
 import logo from "./images/logo.jpg";
 import insta from "./images/insta.png";
 import twitch from "./images/twitch.svg";
 import dogAdmin from "./images/dog-admin-zero.gif";
 import axios from "axios";
-import React, { useEffect, useState, useCallback, user } from "react";
+import React, { useEffect, useState, useCallback, memo } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import PlayList from "./PlayList";
-import VideoPlayer from "./VideoPlayer";
+import PlayList from "./Components/PlayList";
+import VideoPlayer from "./Components/VideoPlayer";
+import "./Main.scss";
 
 function App() {
   const key = process.env.REACT_APP_YOUTUBE_API_KEY;
-
-  const YOUTUBE_API_URL =
-    "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ";
+  const CHANNEL_ID = "UCUj6rrhMTR9pipbAWBAMvUQ";
+  const YOUTUBE_API_URL = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${CHANNEL_ID}`;
 
   const [playlist, setPlaylist] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,8 +23,9 @@ function App() {
   const offset = (page - 1) * limit;
 
   let [search, setSearch] = useState([]);
-
+  // 모든 재생목록 불러오기 위한 nextPageToken 값 저장
   const nextPageToken = ["CDIQAA", "CGQQAA", "CJYBEAA"];
+  // 침착맨 재생목록 불러오기
   useEffect(() => {
     axios
       .all([
@@ -55,8 +55,7 @@ function App() {
       )
       .catch(() => {});
   }, []);
-  console.log(playlist);
-
+  // 검색어 자동 완성 구현 함수
   const updateChange = useCallback(
     (e) => {
       let data = e.target.value;
@@ -96,6 +95,7 @@ function App() {
               setSearch={setSearch}
               search={search}
             />
+            {/*침착맨 재생 목록 렌더링*/}
             {playlist &&
               playlist.slice(offset, offset + limit).map((i, idx) => {
                 return (
@@ -126,6 +126,7 @@ function App() {
     </div>
   );
 }
+// Loading UI
 function Loading() {
   return (
     <div className="loading">
@@ -134,9 +135,9 @@ function Loading() {
     </div>
   );
 }
-function Pagination({ total, limit, page, setPage }) {
+// 페이지네이션 컨트롤
+const Pagination = memo(({ total, limit, page, setPage }) => {
   const numPages = Math.ceil(total / limit);
-
   return (
     <div className="page-btn">
       {Array(numPages)
@@ -153,8 +154,8 @@ function Pagination({ total, limit, page, setPage }) {
         ))}
     </div>
   );
-}
-
+});
+// 검색 Input
 const SearchBar = ({ updateChange, search, setSearch }) => {
   return (
     <div className="search">
@@ -186,4 +187,4 @@ const SearchBar = ({ updateChange, search, setSearch }) => {
   );
 };
 
-export default React.memo(App);
+export default App;

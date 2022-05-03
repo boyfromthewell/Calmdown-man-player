@@ -1,12 +1,11 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
-
-import "./player.scss";
+import "../Styles/player.scss";
 function VideoPlayer() {
   let { videoID } = useParams();
-  console.log(videoID);
+  // React-player 라이브러리 이용 유튜브 동영상 재생
   let videoLink = "https://youtube.com/watch?v=" + videoID;
   return (
     <>

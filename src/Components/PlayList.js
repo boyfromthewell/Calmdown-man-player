@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
-import "./Playlist.scss";
+import "../Styles/Playlist.scss";
 import { Badge, Form } from "react-bootstrap";
 
 function PlayList() {
@@ -16,7 +16,7 @@ function PlayList() {
   let filterData = [];
 
   let today = new Date();
-
+  // 재생목록 내의 모든 동영상 불러오기
   useEffect(() => {
     axios
       .get(
@@ -28,13 +28,14 @@ function PlayList() {
       })
       .catch(() => {});
   }, []);
+  // 재생목록 내의 모든 동영상 ID 추출하여, 변수에 저장
   {
     videolist.map((x) => {
       videoID.push("&id=" + x.snippet.resourceId.videoId);
     });
   }
   let videoIDstring = videoID.join("");
-
+  // 추출한 동영상 ID 활용 동영상 조회수, 업로드 날짜 등 가져오기
   useEffect(() => {
     axios
       .get(
@@ -46,9 +47,11 @@ function PlayList() {
       })
       .catch(() => {});
   }, [videolist]);
+  // select 태그 컨트롤 함수
   const changeControl = (e) => {
     setSelected(e.target.value);
   };
+  // 선택한 select 값에 따라 데이터 재렌더링
   function selectRender(value) {
     if (value === "조회순") {
       filterData = videoInfo
@@ -78,6 +81,8 @@ function PlayList() {
         });
     }
   }
+  // 현재 시간과 업로드 시간 계산용 함수 
+  // (7일 이내에 업로드된 영상이면 return true)
   function getDate(d1, d2) {
     let date1 = new Date(d1);
     let date2 = new Date(d2);
@@ -104,6 +109,7 @@ function PlayList() {
     </div>
   );
 }
+// 각각의 유튜브 동영상 렌더링용 컴포넌트
 function VideoInfo({ x, today, getDate }) {
   return (
     <div className="video">
