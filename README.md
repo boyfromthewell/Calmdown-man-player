@@ -19,6 +19,12 @@
 ![](https://images.velog.io/images/boyfromthewell/post/e0dc0ae7-c8d4-45a3-8749-71400d79ffed/dog-admin-zero.gif)  
 해당 이미지로 로딩 UI도 구현했는데 로딩이 너무 빨라서 잘 안보인다
 ***
+## 즉-시 재생목록 검색
+
+![](https://velog.velcdn.com/images/boyfromthewell/post/e3ad57f3-cec2-43c2-8e9a-3d957e05c051/image.png)  
+자동완성 기능으로 즉-시 해당 재생목록 이동  
+
+***
 ## 재생목록 동영상 즉-시 감상
 
 ![](https://images.velog.io/images/boyfromthewell/post/78cb643e-58ca-4e89-a12c-d4bf8a08c74d/image.png)  '쇼핑맨' 재생목록의 동영상을 감상 할것이다.
