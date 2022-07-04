@@ -19,6 +19,12 @@
 ![](https://images.velog.io/images/boyfromthewell/post/e0dc0ae7-c8d4-45a3-8749-71400d79ffed/dog-admin-zero.gif)  
 해당 이미지로 로딩 UI도 구현했는데 로딩이 너무 빨라서 잘 안보인다
 ***
+## 즉-시 재생목록 검색
+
+![](https://velog.velcdn.com/images/boyfromthewell/post/e3ad57f3-cec2-43c2-8e9a-3d957e05c051/image.png)  
+자동완성 기능으로 즉-시 해당 재생목록 이동  
+
+***
 ## 재생목록 동영상 즉-시 감상
 
 ![](https://images.velog.io/images/boyfromthewell/post/78cb643e-58ca-4e89-a12c-d4bf8a08c74d/image.png)  '쇼핑맨' 재생목록의 동영상을 감상 할것이다.
@@ -50,6 +56,12 @@ select 태그를 통해 구현하였다.
 
 
 ***
+
+<img src="https://velog.velcdn.com/images/boyfromthewell/post/d1f90b0e-6f92-44dc-9f91-e0dd21600ec5/image.jpg" width="30%"> 
+모바일 환경 에서도 무한으로 즐길 수 있다.  
+  
+***
+  
 >배포 링크: https://boyfromthewell.github.io/Dog-Admin-Player/
 
 > _**유튜브 API를 다뤄보고 바로 만들어보고 싶어서 만들었고, 간단한 기능밖에 없어서 큰 어려움은 없이 토이프로젝트를 즐겁게 만들었던거 같다!!!! CSS가 근데 제일 싫다!!!**_
