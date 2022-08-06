@@ -4,10 +4,11 @@ import insta from "../images/insta.png";
 import twitch from "../images/twitch.svg";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Pagination from "./Modules/Pagenation";
-import Loading from "./Modules/Loading";
-import SearchBar from "./Modules/SearchBar";
+import Pagination from "./common/Pagenation";
+import Loading from "./common/Loading";
+import SearchBar from "./common/SearchBar";
 import "../Styles/Home.scss";
+import UpBtn from "./common/UpBtn";
 
 function Home() {
   const key = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -106,6 +107,7 @@ function Home() {
         page={page}
         setPage={setPage}
       />
+      <UpBtn />
     </>
   );
 }

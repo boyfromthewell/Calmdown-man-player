@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Link, Route, Switch } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 import axios from "axios";
 import "../Styles/Playlist.scss";
 import { Badge, Form } from "react-bootstrap";
+import UpBtn from "./common/UpBtn";
 
 function PlayList() {
   let { id } = useParams();
@@ -47,6 +49,7 @@ function PlayList() {
       })
       .catch(() => {});
   }, [videolist]);
+
   // select 태그 컨트롤 함수
   const changeControl = (e) => {
     setSelected(e.target.value);
@@ -81,12 +84,12 @@ function PlayList() {
         });
     }
   }
-  // 현재 시간과 업로드 시간 계산용 함수 
+  // 현재 시간과 업로드 시간 계산용 함수
   // (7일 이내에 업로드된 영상이면 return true)
   function getDate(d1, d2) {
     let date1 = new Date(d1);
     let date2 = new Date(d2);
-  
+
     let diffDate = date1.getTime() - date2.getTime();
     if (Math.abs(diffDate / (1000 * 3600 * 24)) < 7) {
       return true;
@@ -131,6 +134,7 @@ function VideoInfo({ x, today, getDate }) {
       <p className="upload">
         업로드 : {x.snippet["publishedAt"].substring(0, 10)}{" "}
       </p>
+      <UpBtn />
     </div>
   );
 }
