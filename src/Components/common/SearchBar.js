@@ -8,9 +8,10 @@ const SearchBar = ({ updateChange, search, setSearch }) => {
         className="seacrh-bar"
         style={{
           width: "100%",
-          height: "40px",
+          height: "50px",
           maxWidth: "600px",
-          border: "1px solid white",
+          border: "1px solid #4b89dc",
+          borderRadius: "12px",
         }}
         placeholder="즉-시 검색"
         onChange={(e) => updateChange(e)}

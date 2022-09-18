@@ -75,7 +75,7 @@ function Home() {
         </a>
       </p>
       <p className="twitch">
-        방송 보기
+        Live 방송 보기
         <a target="_blank" href="https://www.twitch.tv/zilioner">
           <img src={twitch} alt="" width="30" height="30" />
         </a>
